@@ -16,7 +16,7 @@ const SettingsScreen: React.FC = () => {
     }
   };
 
-  const sections = [
+  const sections: Array<{ title: string; items: any[] }> = [
     {
       title: "Living Space",
       items: [
