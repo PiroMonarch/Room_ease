@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoomEase - Harmonious Shared Living</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2b8888",
+            "primary-dark": "#206666",
+            "secondary": "#E89B86",
+            "accent": "#98C1A5",
+            "background-light": "#f6f8f8",
+            "background-dark": "#141e1e",
+            "surface-light": "#ffffff",
+            "surface-dark": "#1e2a2a",
+            "harmony-green": "#4CAF50",
+            "coral-salmon": "#FF7F50",
+            "text-dark": "#1d110c",
+            "cream": "#F9F7F4"
+          },
+          fontFamily: {
+            "display": ["Spline Sans", "Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "xl": "1.5rem",
+            "2xl": "2rem"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #121212;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Spline Sans', sans-serif;
+      overflow: hidden;
+    }
+
+    /* iPhone Frame Styling */
+    .iphone-frame {
+      position: relative;
+      width: 393px;
+      height: 852px;
+      background: #000;
+      border-radius: 55px;
+      box-shadow: 0 0 0 11px #1f1f1f, 0 0 0 13px #191919, 0 30px 60px rgba(0,0,0,0.8);
+      overflow: hidden;
+      border: 8px solid #000;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Physical Buttons */
+    .iphone-frame::before, .iphone-frame::after {
+      content: '';
+      position: absolute;
+      background: #1f1f1f;
+      border-radius: 2px;
+    }
+
+    /* Silent Switch & Volume Buttons */
+    .side-buttons-left {
+      position: absolute;
+      left: -14px;
+      top: 110px;
+      width: 3px;
+      height: 26px;
+      background: #1f1f1f;
+      border-radius: 2px 0 0 2px;
+    }
+    .volume-up {
+      position: absolute;
+      left: -14px;
+      top: 165px;
+      width: 3px;
+      height: 50px;
+      background: #1f1f1f;
+      border-radius: 2px 0 0 2px;
+    }
+    .volume-down {
+      position: absolute;
+      left: -14px;
+      top: 225px;
+      width: 3px;
+      height: 50px;
+      background: #1f1f1f;
+      border-radius: 2px 0 0 2px;
+    }
+    /* Power Button */
+    .power-button {
+      position: absolute;
+      right: -14px;
+      top: 190px;
+      width: 3px;
+      height: 80px;
+      background: #1f1f1f;
+      border-radius: 0 2px 2px 0;
+    }
+
+    #root {
+      width: 100%;
+      height: 100%;
+      background: #f6f8f8;
+      border-radius: 47px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .home-indicator {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 134px;
+      height: 5px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+      z-index: 1000;
+    }
+
+    .dark .home-indicator {
+      background: rgba(255,255,255,0.3);
+    }
+
+    @media (max-width: 450px) {
+      body { padding: 0; background: #000; }
+      .iphone-frame { width: 100vw; height: 100vh; border-radius: 0; border: none; box-shadow: none; }
+      .iphone-frame::before, .iphone-frame::after, .side-buttons-left, .volume-up, .volume-down, .power-button { display: none; }
+      #root { border-radius: 0; }
+    }
+    
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .filled { font-variation-settings: 'FILL' 1; }
+
+    /* Transitions */
+    .page-enter { opacity: 0; transform: translateY(20px); }
+    .page-enter-active { opacity: 1; transform: translateY(0); transition: all 400ms ease-out; }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="selection:bg-primary/20">
+  <div class="iphone-frame">
+    <div class="side-buttons-left"></div>
+    <div class="volume-up"></div>
+    <div class="volume-down"></div>
+    <div class="power-button"></div>
+    <div id="root"></div>
+    <div class="home-indicator"></div>
+  </div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

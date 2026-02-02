@@ -1,0 +1,8 @@
+{
+  "name": "RoomEase",
+  "description": "A harmonious shared living platform for tracking expenses, managing utilities, and settling bills with roommates in a mobile-first interface.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
